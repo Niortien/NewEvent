@@ -1,6 +1,6 @@
 .header__top {
   padding: 10px 0px;
-  background: #000d6b;
+  background: #ad062d;
   color: #fff;
 }
 
@@ -58,8 +58,9 @@
   font-weight: 700;
 }
 
-.logo h1 {
-  line-height: 1.5rem;
+.logo img {
+  width: 70px;
+  height: 70px ;
 }
 
 .header__location span i {

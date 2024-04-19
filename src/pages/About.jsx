@@ -6,7 +6,7 @@ import AboutSection from "../components/UI/AboutSection";
 import { Container, Row, Col } from "reactstrap";
 import BecomeDriverSection from "../components/UI/BecomeDriverSection";
 
-import driveImg from "../assets/all-images/drive.jpg";
+import driveImg from "../assets/all-images/Capture d'écran 2024-03-01 135605.png";
 import OurMembers from "../components/UI/OurMembers";
 import "../styles/about.css";
 
@@ -28,7 +28,7 @@ const About = () => {
             <Col lg="6" md="6" sm="12">
               <div className="about__page-content">
                 <h2 className="section__title">
-                  We Are Committed To Provide Safe Ride Solutions
+                Nous nous engageons à fournir une organisation vite et  sûres
                 </h2>
 
                 <p className="section__description">
@@ -52,7 +52,7 @@ const About = () => {
 
                   <div>
                     <h6 className="section__subtitle">Need Any Help?</h6>
-                    <h4>+00123456789</h4>
+                    <h4>+225 01 41 89 86 59 / 07 77 05 23 17</h4>
                   </div>
                 </div>
               </div>

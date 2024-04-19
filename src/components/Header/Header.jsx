@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-
+import logo from "../../assets/all-images/cars-img/logo.png";
 import { Container, Row, Col } from "reactstrap";
 import { Link, NavLink } from "react-router-dom";
 import "../../styles/header.css";
@@ -14,8 +14,8 @@ const navLinks = [
     display: "About",
   },
   {
-    path: "/cars",
-    display: "Cars",
+    path: "/service",
+    display: "service",
   },
 
   {
@@ -41,9 +41,9 @@ const Header = () => {
           <Row>
             <Col lg="6" md="6" sm="6">
               <div className="header__top__left">
-                <span>Need Help?</span>
+                <span>Besoin d'aide?</span>
                 <span className="header__top__help">
-                  <i class="ri-phone-fill"></i> +1-202-555-0149
+                  <i class="ri-phone-fill"></i> +225 01 41 89 86 59 / 07 77 05 23 17
                 </span>
               </div>
             </Col>
@@ -51,11 +51,11 @@ const Header = () => {
             <Col lg="6" md="6" sm="6">
               <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
                 <Link to="#" className=" d-flex align-items-center gap-1">
-                  <i class="ri-login-circle-line"></i> Login
+                  <i class="ri-login-circle-line"></i> Connexion
                 </Link>
 
                 <Link to="#" className=" d-flex align-items-center gap-1">
-                  <i class="ri-user-line"></i> Register
+                  <i class="ri-user-line"></i> Inscription
                 </Link>
               </div>
             </Col>
@@ -71,10 +71,7 @@ const Header = () => {
               <div className="logo">
                 <h1>
                   <Link to="/home" className=" d-flex align-items-center gap-2">
-                    <i class="ri-car-line"></i>
-                    <span>
-                      Rent Car <br /> Service
-                    </span>
+                    <img src={logo} alt="" />
                   </Link>
                 </h1>
               </div>
@@ -86,8 +83,8 @@ const Header = () => {
                   <i class="ri-earth-line"></i>
                 </span>
                 <div className="header__location-content">
-                  <h4>Bangladesh</h4>
-                  <h6>Sylhet City, Bangladesh</h6>
+                  <h4>Côte d'Ivoire</h4>
+                  <h6>Bingerville,Abidjan,</h6>
                 </div>
               </div>
             </Col>
@@ -98,8 +95,9 @@ const Header = () => {
                   <i class="ri-time-line"></i>
                 </span>
                 <div className="header__location-content">
-                  <h4>Sunday to Friday</h4>
-                  <h6>10am - 7pm</h6>
+                  <h4>
+                   24/24</h4>
+                  <h6>10h - 19h</h6>
                 </div>
               </div>
             </Col>
@@ -147,7 +145,7 @@ const Header = () => {
 
             <div className="nav__right">
               <div className="search__box">
-                <input type="text" placeholder="Search" />
+                <input type="text" placeholder="Service en traitement ,probème technique" />
                 <span>
                   <i class="ri-search-line"></i>
                 </span>

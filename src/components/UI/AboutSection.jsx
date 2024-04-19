@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import "../../styles/about-section.css";
-import aboutImg from "../../assets/all-images/cars-img/bmw-offer.png";
+import aboutImg from "../../assets/all-images/cars-img/Kid’s high class decoration.jpeg";
 
 const AboutSection = ({ aboutClass }) => {
   return (
@@ -17,8 +17,8 @@ const AboutSection = ({ aboutClass }) => {
         <Row>
           <Col lg="6" md="6">
             <div className="about__section-content">
-              <h4 className="section__subtitle">About Us</h4>
-              <h2 className="section__title">Welcome to car rent service</h2>
+              <h4 className="section__subtitle">À propos de nous</h4>
+              <h2 className="section__title">Bienvenue au service d'organisation de cérémonie</h2>
               <p className="section__description">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Voluptatum blanditiis esse accusantium dignissimos labore
@@ -30,25 +30,24 @@ const AboutSection = ({ aboutClass }) => {
 
               <div className="about__section-item d-flex align-items-center">
                 <p className="section__description d-flex align-items-center gap-2">
-                  <i class="ri-checkbox-circle-line"></i> Lorem ipsum dolor sit
-                  amet.
+                  <i class="ri-checkbox-circle-line"></i> Anniversaire
+                  
                 </p>
 
                 <p className="section__description d-flex align-items-center gap-2">
-                  <i class="ri-checkbox-circle-line"></i> Lorem ipsum dolor sit
-                  amet.
+                  <i class="ri-checkbox-circle-line"></i> Mariage
+                  
                 </p>
               </div>
 
               <div className="about__section-item d-flex align-items-center">
                 <p className="section__description d-flex align-items-center gap-2">
-                  <i class="ri-checkbox-circle-line"></i> Lorem ipsum dolor sit
-                  amet.
+                  <i class="ri-checkbox-circle-line"></i> Baptème
+                  
                 </p>
 
                 <p className="section__description d-flex align-items-center gap-2">
-                  <i class="ri-checkbox-circle-line"></i> Lorem ipsum dolor sit
-                  amet.
+                  <i class="ri-checkbox-circle-line"></i> Autres
                 </p>
               </div>
             </div>
