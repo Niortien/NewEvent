@@ -18,7 +18,7 @@ const AboutSection = ({ aboutClass }) => {
           <Col lg="6" md="6">
             <div className="about__section-content">
               <h4 className="section__subtitle">À propos de nous</h4>
-              <h2 className="section__title">Bienvenue au service d'organisation de cérémonie</h2>
+              <h2 className="section__title">Bienvenue au service d'organisation de cérémonie de Envent Planer</h2>
               <p className="section__description">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Voluptatum blanditiis esse accusantium dignissimos labore

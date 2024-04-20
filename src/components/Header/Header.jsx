@@ -97,7 +97,7 @@ const Header = () => {
                 <div className="header__location-content">
                   <h4>
                    24/24</h4>
-                  <h6>10h - 19h</h6>
+                  <h6>6h - 19h</h6>
                 </div>
               </div>
             </Col>
@@ -110,7 +110,7 @@ const Header = () => {
             >
               <button className="header__btn btn ">
                 <Link to="/contact">
-                  <i class="ri-phone-line"></i> Request a call
+                  <i class="ri-phone-line"></i> Démander un appel
                 </Link>
               </button>
             </Col>

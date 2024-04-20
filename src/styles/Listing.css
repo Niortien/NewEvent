@@ -1,0 +1,56 @@
+.Listing{
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 400px;
+    
+
+}
+
+.listing-box{
+   
+    height: 200Px;
+    width: 300px;
+    border-radius: 55px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.one{
+    background-image: url('../assets/all-images/deux-bagues-or-sont-assises-cote-rose-rouge_254939-889.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.two{
+    background-image: url('../assets/all-images/anni1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.three{
+    background-image: url('../assets/all-images/bapt1.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.up{
+   
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    height: 160px;
+}
+.upp h5{
+    color: orange;
+    font-size: 25px;
+   
+}
+.down h4 {
+    color: darkblue;
+    font-weight: bolder;
+    font-size: 40px;
+}
+ 

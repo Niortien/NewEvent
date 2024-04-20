@@ -8,8 +8,8 @@ import ava03 from "../../assets/all-images/ava-3.jpg";
 
 const OUR__MEMBERS = [
   {
-    name: "Jhon Doe",
-    experience: "5 years of experience",
+    name: "Sawadogo Zakaria",
+    experience: "3 and d'experience (Dev Full-stack)",
     fbUrl: "#",
     instUrl: "#",
     twitUrl: "#",
@@ -18,8 +18,8 @@ const OUR__MEMBERS = [
   },
 
   {
-    name: "David Lisa",
-    experience: "5 years of experience",
+    name: "Maniga Noura",
+    experience: "5 ans  d'experience (UI designer,dev-Front)",
     fbUrl: "#",
     instUrl: "#",
     twitUrl: "#",
@@ -28,8 +28,8 @@ const OUR__MEMBERS = [
   },
 
   {
-    name: "Hilton King",
-    experience: "5 years of experience",
+    name: "Gnako Reine",
+    experience: "4 ans d' experience (UX designer ,dev-Front)",
     fbUrl: "#",
     instUrl: "#",
     twitUrl: "#",
@@ -38,8 +38,8 @@ const OUR__MEMBERS = [
   },
 
   {
-    name: "Jhon Doe",
-    experience: "5 years of experience",
+    name: "Toure Loraine",
+    experience: "4 ans d' experience (UX designer)",
     fbUrl: "#",
     instUrl: "#",
     twitUrl: "#",

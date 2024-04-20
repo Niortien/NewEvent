@@ -52,8 +52,8 @@ const Testimonial = () => {
           <img src={ava01} alt="" className="w-25 h-25 rounded-2" />
 
           <div>
-            <h6 className="mb-0 mt-3">Jhon Doe</h6>
-            <p className="section__description">Customer</p>
+            <h6 className="mb-0 mt-3">Affroumou Ado</h6>
+            <p className="section__description">Informaticien</p>
           </div>
         </div>
       </div>
@@ -70,8 +70,8 @@ const Testimonial = () => {
           <img src={ava02} alt="" className="w-25 h-25 rounded-2" />
 
           <div>
-            <h6 className="mb-0 mt-3">Jhon Doe</h6>
-            <p className="section__description">Customer</p>
+            <h6 className="mb-0 mt-3">Dasso Yasmine</h6>
+            <p className="section__description">Professeur du Cames</p>
           </div>
         </div>
       </div>
@@ -88,8 +88,8 @@ const Testimonial = () => {
           <img src={ava03} alt="" className="w-25 h-25 rounded-2" />
 
           <div>
-            <h6 className="mb-0 mt-3">Jhon Doe</h6>
-            <p className="section__description">Customer</p>
+            <h6 className="mb-0 mt-3">Gbane Karamoko </h6>
+            <p className="section__description">Footballeur</p>
           </div>
         </div>
       </div>
@@ -106,8 +106,8 @@ const Testimonial = () => {
           <img src={ava04} alt="" className="w-25 h-25 rounded-2" />
 
           <div>
-            <h6 className="mb-0 mt-3">Jhon Doe</h6>
-            <p className="section__description">Customer</p>
+            <h6 className="mb-0 mt-3"> Diaith Urielle</h6>
+            <p className="section__description">Chef d'entreprise</p>
           </div>
         </div>
       </div>
