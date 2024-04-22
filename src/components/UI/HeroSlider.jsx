@@ -23,10 +23,10 @@ const HeroSlider = () => {
         <Container>
           <div className="slider__content ">
             
-            <h1 className="text-light mb-4">Réservez Maitenant et Obtenez 50% de reduction</h1>
+            <h1 className="text-light mb-4">Organiser vos  Baptème  avec EventPlanner</h1>
 
             <button className="btn reserve__btn mt-4">
-              <Link to="/cars">Réservez Maitenant</Link>
+              <Link to="/service">Réservez Maitenant</Link>
             </button>
           </div>
         </Container>
@@ -36,10 +36,10 @@ const HeroSlider = () => {
         <Container>
           <div className="slider__content ">
            
-            <h1 className="text-light mb-4">Réservez Maitenant et Obtenez 50% de reduction</h1>
+            <h1 className="text-light mb-4">Organiser vos  Mariage  avec EventPlanner</h1>
 
             <button className="btn reserve__btn mt-4">
-              <Link to="/cars">Reserve Maintenant</Link>
+              <Link to="/service">Reserve Maintenant</Link>
             </button>
           </div>
         </Container>
@@ -49,10 +49,10 @@ const HeroSlider = () => {
         <Container>
           <div className="slider__content ">
            
-            <h1 className="text-light mb-4">Réservez Maitenant et Obtenez 50% de reduction</h1>
+            <h1 className="text-light mb-4">Organiser vos  Anniversaire  avec EventPlanner</h1>
 
             <button className="btn reserve__btn mt-4">
-              <Link to="/cars">Réserve  Maintenant</Link>
+              <Link to="/service">Réserve  Maintenant</Link>
             </button>
           </div>
         </Container>

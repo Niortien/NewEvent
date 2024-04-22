@@ -10,6 +10,11 @@ import NotFound from "../pages/NotFound";
 import Contact from "../pages/Contact";
 import ServicesList from "../components/UI/ServicesList";
 import ServicesListing from '../pages/SevicesListing'
+import Inscription from "../pages/Inscription";
+import LoginFormulaireClient from '../components/UI/LoginFormulaireClient'
+import LoginFormulairePrestataire from '../components/UI/LoginFormulairePrestataire'
+import ClientLogin from "../pages/ClientLogin";
+import SignFormulaire from "../components/UI/SignFormulaire.jsx"
 
 const Routers = () => {
   return (
@@ -18,8 +23,12 @@ const Routers = () => {
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/service" element={<ServicesListing />} />
-    { /*  <Route path="/service" element={<CarListing />} /> */}
+    <Route path="/Mariageservice" element={<CarListing />} /> 
       <Route path="/cars/:slug" element={<CarDetails />} />
+      <Route path="/inscription" element={<Inscription />} />
+      <Route path="/loginPrestataire" element={<LoginFormulairePrestataire />} />
+      <Route path="/loginClient" element={<LoginFormulaireClient />} />
+      <Route path="/sign" element={<SignFormulaire />} />
       <Route path="/blogs" element={<Blog />} />
       <Route path="/blogs/:slug" element={<BlogDetails />} />
       <Route path="/contact" element={<Contact />} />

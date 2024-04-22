@@ -1,0 +1,68 @@
+.inscription{
+   
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    justify-content: space-between;
+    background-image: url('../assets/all-images/newPres.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.inscription-up{
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inscription-up-link:hover{
+    background-color: orange;
+}
+.inscription-down{
+   
+    display: flex;
+   height: 20vh;
+    justify-content: space-between;
+    align-items: center;
+}
+.inscription-up-link{
+ 
+    height: 100px ;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 20px;
+}
+.inscription-down-left{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bolder;
+display: flex;
+justify-content: space-evenly;
+border-radius: 20px;
+width: 30%;
+}
+
+.inscription-down-left:hover{
+    background-color: orange;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.inscription-down-right:hover{
+    background-color: orange;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.inscription-down-right{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bolder;
+  
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    width: 30%;
+}

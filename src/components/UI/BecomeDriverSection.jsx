@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/become-driver.css";
 import { Container, Row, Col } from "reactstrap";
-
+import { Link } from "react-router-dom";
 import driverImg from "../../assets/all-images/newPres.jpg";
 
 const BecomeDriverSection = () => {
@@ -18,9 +18,9 @@ const BecomeDriverSection = () => {
             tu as un ou des services mais pas de clients ? Alors rejoins nous
             </h2>
 
-            <button className="btn become__driver-btn mt-4">
+            <Link  to='/loginPrestataire' className="btn become__driver-btn mt-4" style={{backgroundColor:'white'}}>
               devenir Prestataire
-            </button>
+            </Link>
           </Col>
         </Row>
       </Container>

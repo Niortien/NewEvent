@@ -14,9 +14,9 @@ function SevicesListing() {
             <div className="down"><h4> de services</h4></div>
         </div>
         <div className='Listing'>
-        <Link to="/" className="listing-box one"></Link>
-        <Link to="/" className="listing-box two"></Link>
-        <Link to='/' className="listing-box three"></Link>
+        <Link to="/Mariageservice" className="listing-box one"></Link>
+        <Link to="/Mariageservice" className="listing-box two"></Link>
+        <Link to='/Mariageservice' className="listing-box three"></Link>
         </div>
         
         <Testimonial></Testimonial>
