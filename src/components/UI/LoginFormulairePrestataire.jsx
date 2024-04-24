@@ -1,71 +1,200 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Form, Button, Container, Row, Col, FormLabel } from 'react-bootstrap';
+import ReCAPTCHA from "react-google-recaptcha";
+import { useNavigate } from 'react-router-dom';
+import { FaGoogle, FaApple } from 'react-icons/fa';
 
+const LoginFormulairePrestataire = () => {
+  const [nom, setNom] = useState('');
+  const [prenom, setPrenom] = useState('');
+  const [email, setEmail] = useState('');
+  const [mdp, setMdp] = useState('');
+  const [confMdp, setConfMdp] = useState('');
+  const [recaptchaValue, setRecaptchaValue] = useState('');
+  const [nomError, setNomError] = useState('');
+  const [prenomError, setPrenomError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [mdpError, setMdpError] = useState('');
+  const [confMdpError, setConfMdpError] = useState('');
+  const [recaptchaError, setRecaptchaError] = useState('');
 
-function Formulaire() {
+  const recaptchaRef = React.createRef();
+  const navigate = useNavigate();
+
+  const isStrongPassword = (password) => {
+    // Définir les critères de mot de passe fort
+    const strongRegex = /^(?=.*[@´~#{[|]@^\`|[{#*])(?=.*[a-z])(?=.*[A-Z])[A-Za-z@´~#{[|]@^\`|[{#*\d]{8,}$/;
+    return strongRegex.test(password);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!nom ||!prenom ||!email ||!mdp ||!confMdp ||!recaptchaValue) {
+      if (!nom) setNomError('Veuillez entrer votre nom');
+      if (!prenom) setPrenomError('Veuillez entrer votre prénom');
+      if (!email) setEmailError('Veuillez entrer votre adresse e-mail');
+      if (!mdp) setMdpError('Veuillez entrer votre mot de passe');
+      if (!confMdp) setConfMdpError('Veuillez confirmer votre mot de passe');
+      if (!recaptchaValue) setRecaptchaError('Veuillez vérifier que vous êtes un humain');
+      return;
+    }
+
+    if (mdp!== confMdp) {
+      setConfMdpError('Les mots de passe ne correspondent pas');
+      return;
+    }
+
+    if (!isStrongPassword(mdp)) {
+      setMdpError('Veuillez utiliser un mot de passe fort contenant au moins un caractère spécial et une combinaison de lettres majuscules et minuscules');
+      return;
+    }
+
+    // Envoyer les données au serveur
+    axios.post('http://localhost:8080/api/v1/rest/prestataires/inscription', { nom, prenom, email, mdp })
+  .then(response => {
+        // gérer la connexion réussie
+        navigate("/code-confirmation");
+      })
+  .catch(error => {
+        // gérer l'erreur lors de la connexion
+      });
+  }
+
+  const handleRecaptchaChange = (value) => {
+    setRecaptchaValue(value);
+    setRecaptchaError(''); // Réinitialiser l'erreur lorsque le champ reCAPTCHA est rempli
+  }
+
   return (
-    <div>
-    <section className="vh-100" style={{backgroundColor: '#eee',}}>
-      <div className="container h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-lg-12 col-xl-11">
-            <div className="card text-black" style={{borderRadius: 25}}>
-              <div className="card-body p-md-5">
-                <div className="row justify-content-center">
-                  <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                    <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Prestataire Login</p>
-                    <form className="mx-1 mx-md-4">
-                      <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-user fa-lg me-3 fa-fw" />
-                        <div data-mdb-input-init className="form-outline flex-fill mb-0">
-                          <input type="text" id="form3Example1c" className="form-control" />
-                          <label className="form-label" htmlFor="form3Example1c">Your Name</label>
-                        </div>
-                      </div>
-                      <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-envelope fa-lg me-3 fa-fw" />
-                        <div data-mdb-input-init className="form-outline flex-fill mb-0">
-                          <input type="email" id="form3Example3c" className="form-control" />
-                          <label className="form-label" htmlFor="form3Example3c">Your Email</label>
-                        </div>
-                      </div>
-                      <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-lock fa-lg me-3 fa-fw" />
-                        <div data-mdb-input-init className="form-outline flex-fill mb-0">
-                          <input type="password" id="form3Example4c" className="form-control" />
-                          <label className="form-label" htmlFor="form3Example4c">Password</label>
-                        </div>
-                      </div>
-                      <div className="d-flex flex-row align-items-center mb-4">
-                        <i className="fas fa-key fa-lg me-3 fa-fw" />
-                        <div data-mdb-input-init className="form-outline flex-fill mb-0">
-                          <input type="password" id="form3Example4cd" className="form-control" />
-                          <label className="form-label" htmlFor="form3Example4cd">Repeat your password</label>
-                        </div>
-                      </div>
-                      <div className="form-check d-flex justify-content-center mb-5">
-                        <input className="form-check-input me-2" type="checkbox" id="form2Example3c" />
-                        <label className="form-check-label" htmlFor="form2Example3">
-                          I agree all statements in <a href="#!">Terms of service</a>
-                        </label>
-                      </div>
-                      <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="button" data-mdb-button-init data-mdb-ripple-init className="btn btn-primary btn-lg">S'inscrire</button>
-                      </div>
-                    </form>
-                  </div>
-                  <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp" className="img-fluid" alt="Sample image" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-  )
-}
+    <Container className="d-flex align-items-center justify-content-center vh-100">
+      <Row>
+        <Col xs={12} md={6} lg={6} xl={5} order-2 order-lg-1>
+        <h1 className="text-center mb-5" style={{ fontWeight: 'bold' }}>INSCRIPTION</h1>
+        <Form onSubmit={handleSubmit}>
+            <Row>
+              <Col>
+                <Form.Group controlId="formNom">
+                  <FormLabel>Nom</FormLabel>
+                  <Form.Control
+                    type="text"
+                    placeholder="Votre nom"
+                    value={nom}
+                    onChange={(e) => {
+                      setNom(e.target.value);
+                      setNomError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
+                    }}
+                    style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)' }}
+                    isInvalid={!!nomError}
+                  />
+                  {nomError && <div className="invalid-feedback">Ce champ est requis</div>}
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="formPrenom">
+                  <FormLabel>Prénom</FormLabel>
+                  <Form.Control
+                    type="text"
+                    placeholder="Votre prénom"
+                    value={prenom}
+                    onChange={(e) => {
+                      setPrenom(e.target.value);
+                      setPrenomError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
+                    }}
+                    style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)', marginRight: '10px' }}
+                    isInvalid={!!prenomError}
+                  />
+                  {prenomError && <div className="invalid-feedback">Ce champ est requis</div>}
+                </Form.Group>
+              </Col>
+            </Row>
+            <Form.Group controlId="formEmail">
+              <FormLabel>Email</FormLabel>
+              <Form.Control
+                type="email"
+                placeholder="Votre adresse mail"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setEmailError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
+                }}
+                style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)' }}
+                isInvalid={!!emailError}
+              />
+              {emailError && <div className="invalid-feedback">Ce champ est requis</div>}
+            </Form.Group>
+            <Row>
+              <Col>
+                <Form.Group controlId="formMdp">
+                  <FormLabel>Mot de passe</FormLabel>
+                  <Form.Control
+                    type="password"
+                    placeholder="Mot de passe"
+                    value={mdp}
+                    onChange={(e) => {
+                      setMdp(e.target.value);
+                      setMdpError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
+                    }}
+                    style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)' }}
+                    isInvalid={!!mdpError}
+                  />
+                  {mdpError && <div className="invalid-feedback">{mdpError}</div>}
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="formConfMdp">
+                  <FormLabel>Confirmer le mot de passe</FormLabel>
+                  <Form.Control
+                    type="password"
+                    placeholder="Confirmer le mot de passe"
+                    value={confMdp}
+                    onChange={(e) => {
+                      setConfMdp(e.target.value);
+                      setConfMdpError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
+                    }}
+                    style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)' }}
+                    isInvalid={!!confMdpError}
+                  />
+                  {confMdpError && <div className="invalid-feedback">{confMdpError}</div>}
+                </Form.Group>
+              </Col>
+            </Row>
 
-export default Formulaire
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey="6LfCXsMpAAAAAHRC4sxmBH_7kIT-iRGQi8Geb_KJ"
+              onChange={handleRecaptchaChange}
+              className="mt-3"
+              style={{ borderRadius: '5px', boxShadow: 'none' }}
+            />
+            {recaptchaError && <div className="invalid-feedback">{recaptchaError}</div>}
+
+            <Button variant="primary" size="lg" block className="mb-4 mt-4" type="submit">
+              S'inscrire
+            </Button>
+
+            <div className="text-center mb-4">
+              <Button variant="outline-danger" size="lg" style={{ marginRight: '10px' }}>
+                <FaGoogle />Google
+              </Button>
+              <Button variant="outline-dark" size="lg">
+                <FaApple />Apple
+              </Button>
+            </div>
+
+            <div className="text-center mt-3">
+              Déjà inscrit? <a href="/sign">Se connecter</a>
+            </div>
+          </Form>
+        </Col>
+        <Col xs={12} md={6} lg={6} xl={7} order-1 order-lg-2 className="d-flex align-items-center justify-content-center">
+          <div style={{ borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)', padding: '20px' }}>
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp" className="img-fluid" alt="Sample image" />
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default LoginFormulairePrestataire;

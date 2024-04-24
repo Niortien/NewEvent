@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 // Import des icônes
 import { FaGoogle, FaApple } from 'react-icons/fa';
 
-const SignFormulaire = () => {
+const Connexion = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [recaptchaValue, setRecaptchaValue] = useState('');
@@ -109,7 +109,7 @@ const SignFormulaire = () => {
             </div>
 
             <div className="text-center mt-3">
-              Pas encore inscrit? <a href="/inscription">S'inscrire</a>
+              Pas encore inscrit? <a href="/code-confirmation">Se connecter</a>
             </div>
           </Form>
         </Col>
@@ -119,4 +119,4 @@ const SignFormulaire = () => {
   );
 };
 
-export default SignFormulaire;
+export default Connexion;

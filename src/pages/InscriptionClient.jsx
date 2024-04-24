@@ -5,7 +5,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from 'react-router-dom';
 import { FaGoogle, FaApple } from 'react-icons/fa';
 
-const LoginFormulaireClient = () => {
+const InscriptionClient = () => {
   const [nom, setNom] = useState('');
   const [prenom, setPrenom] = useState('');
   const [email, setEmail] = useState('');
@@ -30,7 +30,7 @@ const LoginFormulaireClient = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!nom ||!prenom ||!email ||!mdp ||!confMdp ||!recaptchaValue) {
+    if (!nom || !prenom || !email || !mdp || !confMdp || !recaptchaValue) {
       if (!nom) setNomError('Veuillez entrer votre nom');
       if (!prenom) setPrenomError('Veuillez entrer votre prénom');
       if (!email) setEmailError('Veuillez entrer votre adresse e-mail');
@@ -39,8 +39,8 @@ const LoginFormulaireClient = () => {
       if (!recaptchaValue) setRecaptchaError('Veuillez vérifier que vous êtes un humain');
       return;
     }
-
-    if (mdp!== confMdp) {
+    
+    if (mdp !== confMdp) {
       setConfMdpError('Les mots de passe ne correspondent pas');
       return;
     }
@@ -51,12 +51,12 @@ const LoginFormulaireClient = () => {
     }
 
     // Envoyer les données au serveur
-    axios.post('http://localhost:8080/api/v1/rest/clients/inscription', { nom, prenom, email, mdp })
-  .then(response => {
+    axios.post('http://localhost:8080/connexion', { nom, prenom, email, mdp })
+     .then(response => {
         // gérer la connexion réussie
         navigate("/code-confirmation");
       })
-  .catch(error => {
+     .catch(error => {
         // gérer l'erreur lors de la connexion
       });
   }
@@ -69,9 +69,9 @@ const LoginFormulaireClient = () => {
   return (
     <Container className="d-flex align-items-center justify-content-center vh-100">
       <Row>
-        <Col xs={12} md={6} lg={6} xl={5} order-2 order-lg-1>
-        <h1 className="text-center mb-5" style={{ fontWeight: 'bold' }}>INSCRIPTION</h1>
-        <Form onSubmit={handleSubmit}>
+        <Col>
+          <h2 className="text-center mb-4">Bienvenue à Event Planner</h2>
+          <Form onSubmit={handleSubmit}>
             <Row>
               <Col>
                 <Form.Group controlId="formNom">
@@ -84,7 +84,7 @@ const LoginFormulaireClient = () => {
                       setNom(e.target.value);
                       setNomError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
                     }}
-                    style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)' }}
+                    style={{ width: '100%', height: '40px' }}
                     isInvalid={!!nomError}
                   />
                   {nomError && <div className="invalid-feedback">Ce champ est requis</div>}
@@ -101,7 +101,7 @@ const LoginFormulaireClient = () => {
                       setPrenom(e.target.value);
                       setPrenomError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
                     }}
-                    style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)', marginRight: '10px' }}
+                    style={{ width: '100%', height: '40px' }}
                     isInvalid={!!prenomError}
                   />
                   {prenomError && <div className="invalid-feedback">Ce champ est requis</div>}
@@ -118,7 +118,7 @@ const LoginFormulaireClient = () => {
                   setEmail(e.target.value);
                   setEmailError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
                 }}
-                style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)' }}
+                style={{ width: '100%', height: '40px' }}
                 isInvalid={!!emailError}
               />
               {emailError && <div className="invalid-feedback">Ce champ est requis</div>}
@@ -135,7 +135,7 @@ const LoginFormulaireClient = () => {
                       setMdp(e.target.value);
                       setMdpError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
                     }}
-                    style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)' }}
+                    style={{ width: '100%', height: '40px' }}
                     isInvalid={!!mdpError}
                   />
                   {mdpError && <div className="invalid-feedback">{mdpError}</div>}
@@ -152,7 +152,7 @@ const LoginFormulaireClient = () => {
                       setConfMdp(e.target.value);
                       setConfMdpError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
                     }}
-                    style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)' }}
+                    style={{ width: '100%', height: '40px' }}
                     isInvalid={!!confMdpError}
                   />
                   {confMdpError && <div className="invalid-feedback">{confMdpError}</div>}
@@ -165,7 +165,6 @@ const LoginFormulaireClient = () => {
               sitekey="6LfCXsMpAAAAAHRC4sxmBH_7kIT-iRGQi8Geb_KJ"
               onChange={handleRecaptchaChange}
               className="mt-3"
-              style={{ borderRadius: '5px', boxShadow: 'none' }}
             />
             {recaptchaError && <div className="invalid-feedback">{recaptchaError}</div>}
 
@@ -183,18 +182,13 @@ const LoginFormulaireClient = () => {
             </div>
 
             <div className="text-center mt-3">
-              Déjà inscrit? <a href="/sign">Se connecter</a>
+              Déjà inscrit? <a href="/code-confirmation">Se connecter</a>
             </div>
           </Form>
-        </Col>
-        <Col xs={12} md={6} lg={6} xl={7} order-1 order-lg-2 className="d-flex align-items-center justify-content-center">
-          <div style={{ borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)', padding: '20px' }}>
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp" className="img-fluid" alt="Sample image" />
-          </div>
         </Col>
       </Row>
     </Container>
   );
 };
 
-export default LoginFormulaireClient;
+export default InscriptionClient;
