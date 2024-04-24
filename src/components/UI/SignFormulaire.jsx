@@ -47,7 +47,7 @@ const SignFormulaire = () => {
     <Container className="d-flex align-items-center justify-content-center vh-100">
       <Row>
         <Col>
-          <h2 className="text-center mb-4">Bienvenue à Event Planner</h2>
+        <h1 className="text-center mb-5" style={{ fontWeight: 'bold' }}>CONNEXION</h1>
           <Form onSubmit={handleSubmit}>
             <Row>
               <Col>
