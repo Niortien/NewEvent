@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Form, Button, Container, Row, Col, FormLabel } from 'react-bootstrap';
 import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from 'react-router-dom';
-import { FaGoogle, FaApple } from 'react-icons/fa';
+import { FaGoogle, FaApple, FaEye, FaEyeSlash } from 'react-icons/fa'; 
 
 const LoginFormulaireClient = () => {
   const [nom, setNom] = useState('');
@@ -18,15 +18,12 @@ const LoginFormulaireClient = () => {
   const [mdpError, setMdpError] = useState('');
   const [confMdpError, setConfMdpError] = useState('');
   const [recaptchaError, setRecaptchaError] = useState('');
+  
+  const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const recaptchaRef = React.createRef();
   const navigate = useNavigate();
-
-  const isStrongPassword = (password) => {
-    // Définir les critères de mot de passe fort
-    const strongRegex = /^(?=.*[@´~#{[|]@^\`|[{#*])(?=.*[a-z])(?=.*[A-Z])[A-Za-z@´~#{[|]@^\`|[{#*\d]{8,}$/;
-    return strongRegex.test(password);
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,30 +37,27 @@ const LoginFormulaireClient = () => {
       return;
     }
 
-    if (mdp!== confMdp) {
+    if (mdp !== confMdp) {
       setConfMdpError('Les mots de passe ne correspondent pas');
       return;
     }
 
-    if (!isStrongPassword(mdp)) {
-      setMdpError('Veuillez utiliser un mot de passe fort contenant au moins un caractère spécial et une combinaison de lettres majuscules et minuscules');
-      return;
-    }
-
-    // Envoyer les données au serveur
     axios.post('http://localhost:8080/api/v1/rest/clients/inscription', { nom, prenom, email, mdp })
-  .then(response => {
-        // gérer la connexion réussie
+      .then(response => {
         navigate("/code-confirmation");
       })
-  .catch(error => {
-        // gérer l'erreur lors de la connexion
+      .catch(error => {
+        if (error.response && error.response.data && error.response.data.message) {
+          setErrorMessage(error.response.data.message);
+        } else {
+          setErrorMessage('Une erreur est survenue lors de la connexion. Veuillez réessayer.');
+        }
       });
   }
 
   const handleRecaptchaChange = (value) => {
     setRecaptchaValue(value);
-    setRecaptchaError(''); // Réinitialiser l'erreur lorsque le champ reCAPTCHA est rempli
+    setRecaptchaError(''); 
   }
 
   return (
@@ -71,6 +65,7 @@ const LoginFormulaireClient = () => {
       <Row>
         <Col xs={12} md={6} lg={6} xl={5} order-2 order-lg-1>
         <h1 className="text-center mb-5" style={{ fontWeight: 'bold' }}>INSCRIPTION</h1>
+        {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
         <Form onSubmit={handleSubmit}>
             <Row>
               <Col>
@@ -82,12 +77,12 @@ const LoginFormulaireClient = () => {
                     value={nom}
                     onChange={(e) => {
                       setNom(e.target.value);
-                      setNomError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
+                      setNomError(''); 
                     }}
                     style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)' }}
                     isInvalid={!!nomError}
                   />
-                  {nomError && <div className="invalid-feedback">Ce champ est requis</div>}
+                  {nomError && <div className="invalid-feedback">{nomError}</div>}
                 </Form.Group>
               </Col>
               <Col>
@@ -99,12 +94,12 @@ const LoginFormulaireClient = () => {
                     value={prenom}
                     onChange={(e) => {
                       setPrenom(e.target.value);
-                      setPrenomError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
+                      setPrenomError(''); 
                     }}
                     style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)', marginRight: '10px' }}
                     isInvalid={!!prenomError}
                   />
-                  {prenomError && <div className="invalid-feedback">Ce champ est requis</div>}
+                  {prenomError && <div className="invalid-feedback">{prenomError}</div>}
                 </Form.Group>
               </Col>
             </Row>
@@ -116,28 +111,33 @@ const LoginFormulaireClient = () => {
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
-                  setEmailError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
+                  setEmailError(''); 
                 }}
                 style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)' }}
                 isInvalid={!!emailError}
               />
-              {emailError && <div className="invalid-feedback">Ce champ est requis</div>}
+              {emailError && <div className="invalid-feedback">{emailError}</div>}
             </Form.Group>
             <Row>
               <Col>
                 <Form.Group controlId="formMdp">
                   <FormLabel>Mot de passe</FormLabel>
-                  <Form.Control
-                    type="password"
-                    placeholder="Mot de passe"
-                    value={mdp}
-                    onChange={(e) => {
-                      setMdp(e.target.value);
-                      setMdpError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
-                    }}
-                    style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)' }}
-                    isInvalid={!!mdpError}
-                  />
+                  <div className="password-input-wrapper">
+                    <Form.Control
+                      type={showPassword ? "text" : "password"} 
+                      placeholder="Mot de passe"
+                      value={mdp}
+                      onChange={(e) => {
+                        setMdp(e.target.value);
+                        setMdpError(''); 
+                      }}
+                      style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)' }}
+                      isInvalid={!!mdpError}
+                    />
+                    <Button variant="light" className="password-toggle-btn" onClick={() => setShowPassword(!showPassword)}>
+                      {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </Button>
+                  </div>
                   {mdpError && <div className="invalid-feedback">{mdpError}</div>}
                 </Form.Group>
               </Col>
@@ -150,7 +150,7 @@ const LoginFormulaireClient = () => {
                     value={confMdp}
                     onChange={(e) => {
                       setConfMdp(e.target.value);
-                      setConfMdpError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
+                      setConfMdpError(''); 
                     }}
                     style={{ width: '100%', height: '40px', borderRadius: '5px', boxShadow: '0px 0px 5px rgba(0,0,0,0.1)' }}
                     isInvalid={!!confMdpError}

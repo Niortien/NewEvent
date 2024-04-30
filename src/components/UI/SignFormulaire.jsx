@@ -19,24 +19,27 @@ const SignFormulaire = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!email || !password || !recaptchaValue) {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!email ||!password ||!recaptchaValue) {
       if (!email) setEmailError('Veuillez entrer votre adresse e-mail');
       if (!password) setPasswordError('Veuillez entrer votre mot de passe');
       if (!recaptchaValue) setRecaptchaError('Veuillez vérifier que vous êtes un humain');
       return;
     }
 
-    axios.post('http://localhost:8080/connexion')
-     .then(response => {
-        // handle successful login
+    try {
+      const response = await axios.post('http://localhost:8080/connexion', { email, password });
+      if (response.data.password === password) {
         navigate("/code-confirmation");
-      })
-     .catch(error => {
-        // handle error during login
-      });
-  }
+      } else {
+        setPasswordError('Mot de passe incorrect');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleRecaptchaChange = (value) => {
     setRecaptchaValue(value);
@@ -47,7 +50,7 @@ const SignFormulaire = () => {
     <Container className="d-flex align-items-center justify-content-center vh-100">
       <Row>
         <Col>
-        <h1 className="text-center mb-5" style={{ fontWeight: 'bold' }}>CONNEXION</h1>
+          <h1 className="text-center mb-5" style={{ fontWeight: 'bold' }}>CONNEXION</h1>
           <Form onSubmit={handleSubmit}>
             <Row>
               <Col>
@@ -111,12 +114,14 @@ const SignFormulaire = () => {
             <div className="text-center mt-3">
               Pas encore inscrit? <a href="/inscription">S'inscrire</a>
             </div>
+            <div className="text-center mt-3">
+              <a href="/reset-password">Mot de passe oublié?</a>
+            </div>
           </Form>
         </Col>
-     
       </Row>
     </Container>
   );
-};
+}
 
 export default SignFormulaire;

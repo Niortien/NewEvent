@@ -16,6 +16,8 @@ import LoginFormulairePrestataire from '../components/UI/LoginFormulairePrestata
 import ClientLogin from "../pages/ClientLogin";
 import SignFormulaire from "../components/UI/SignFormulaire.jsx"
 import CodeConfirmation from "../pages/CodeConfirmation.jsx";
+import ResetPassword from "../pages/ResetPassword.jsx";
+
 
 const Routers = () => {
   return (
@@ -31,6 +33,7 @@ const Routers = () => {
       <Route path="/loginClient" element={<LoginFormulaireClient />} />
       <Route path="/sign" element={<SignFormulaire />} />
       <Route path="code-confirmation" element={<CodeConfirmation />}/>
+      <Route path="reset-password" element ={<ResetPassword />}/>
       <Route path="/blogs" element={<Blog />} />
       <Route path="/blogs/:slug" element={<BlogDetails />} />
       <Route path="/contact" element={<Contact />} />
