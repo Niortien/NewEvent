@@ -8,15 +8,16 @@ import Blog from "../pages/Blog";
 import BlogDetails from "../pages/BlogDetails";
 import NotFound from "../pages/NotFound";
 import Contact from "../pages/Contact";
-import ServicesList from "../components/UI/ServicesList";
+//import ServicesList from "../components/UI/ServicesList";
 import ServicesListing from '../pages/SevicesListing'
 import Inscription from "../pages/Inscription";
 import LoginFormulaireClient from '../components/UI/LoginFormulaireClient'
 import LoginFormulairePrestataire from '../components/UI/LoginFormulairePrestataire'
-import ClientLogin from "../pages/ClientLogin";
+//import ClientLogin from "../pages/ClientLogin";
 import SignFormulaire from "../components/UI/SignFormulaire.jsx"
 import CodeConfirmation from "../pages/CodeConfirmation.jsx";
 import ResetPassword from "../pages/ResetPassword.jsx";
+import NewPassword from "../components/UI/NewPassword.jsx";
 
 
 const Routers = () => {
@@ -26,7 +27,7 @@ const Routers = () => {
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/service" element={<ServicesListing />} />
-    <Route path="/Mariageservice" element={<CarListing />} /> 
+      <Route path="/Mariageservice" element={<CarListing />} /> 
       <Route path="/cars/:slug" element={<CarDetails />} />
       <Route path="/inscription" element={<Inscription />} />
       <Route path="/loginPrestataire" element={<LoginFormulairePrestataire />} />
@@ -34,6 +35,7 @@ const Routers = () => {
       <Route path="/sign" element={<SignFormulaire />} />
       <Route path="code-confirmation" element={<CodeConfirmation />}/>
       <Route path="reset-password" element ={<ResetPassword />}/>
+      <Route path="new-password" element ={<NewPassword />}/>
       <Route path="/blogs" element={<Blog />} />
       <Route path="/blogs/:slug" element={<BlogDetails />} />
       <Route path="/contact" element={<Contact />} />

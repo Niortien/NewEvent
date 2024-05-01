@@ -3,9 +3,8 @@ import axios from 'axios';
 import { Form, Button, Container, Row, Col, FormLabel } from 'react-bootstrap';
 import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from 'react-router-dom';
-
-// Import des icônes
-import { FaGoogle, FaApple } from 'react-icons/fa';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { FaGoogle } from 'react-icons/fa';
 
 const SignFormulaire = () => {
   const [email, setEmail] = useState('');
@@ -44,84 +43,115 @@ const SignFormulaire = () => {
   const handleRecaptchaChange = (value) => {
     setRecaptchaValue(value);
     setRecaptchaError(''); // Réinitialiser l'erreur lorsque le champ reCAPTCHA est rempli
-  }
+  };
+
+  const responseGoogle = (response) => {
+    console.log(response);
+    // Gérer la réponse de Google ici
+  };
+
+  const responseGoogleFailure = (response) => {
+    console.log(response);
+    // Gérer l'échec de la connexion avec Google ici
+  };
 
   return (
-    <Container className="d-flex align-items-center justify-content-center vh-100">
-      <Row>
-        <Col>
-          <h1 className="text-center mb-5" style={{ fontWeight: 'bold' }}>CONNEXION</h1>
-          <Form onSubmit={handleSubmit}>
-            <Row>
-              <Col>
-                <Form.Group controlId="formEmail">
-                  <FormLabel>Email</FormLabel>
-                  <Form.Control
-                    type="email"
-                    placeholder="Votre adresse mail"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                      setEmailError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
-                    }}
-                    style={{ width: '100%', height: '40px' }}
-                    isInvalid={!!emailError}
+    <GoogleOAuthProvider clientId="AIzaSyDStHHXU2C5q8cTVMT6HRU3bSyArkI8sOI">
+      <Container className="d-flex align-items-center justify-content-center vh-100">
+        <Row>
+          <Col>
+            <h1 className="text-center mb-5" style={{ fontWeight: 'bold' }}>CONNEXION</h1>
+            <Form onSubmit={handleSubmit}>
+              <Row>
+                <Col>
+                  <Form.Group controlId="formEmail">
+                    <FormLabel>Email</FormLabel>
+                    <Form.Control
+                      type="email"
+                      placeholder="Votre adresse mail"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        setEmailError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
+                      }}
+                      style={{ width: '100%', height: '40px' }}
+                      isInvalid={!!emailError}
+                    />
+                    {emailError && <div className="invalid-feedback">Ce champ est requis</div>}
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Group controlId="formPassword">
+                    <FormLabel>Mot de passe</FormLabel>
+                    <Form.Control
+                      type="password"
+                      placeholder="Mot de passe"
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                        setPasswordError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
+                      }}
+                      style={{ width: '100%', height: '40px',marginBottom:'20px'}}
+                      isInvalid={!!passwordError}
+                    />
+                    {passwordError && <div className="invalid-feedback">Ce champ est requis</div>}
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey="6LfCXsMpAAAAAHRC4sxmBH_7kIT-iRGQi8Geb_KJ"
+                    onChange={handleRecaptchaChange}
+                    style={{ width: '100%', height: '40px', marginBottom:'40px'}}
+                    isInvalid={!!recaptchaError}
                   />
-                  {emailError && <div className="invalid-feedback">Ce champ est requis</div>}
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group controlId="formPassword">
-                  <FormLabel>Mot de passe</FormLabel>
-                  <Form.Control
-                    type="password"
-                    placeholder="Mot de passe"
-                    value={password}
-                    onChange={(e) => {
-                      setPassword(e.target.value);
-                      setPasswordError(''); // Réinitialiser l'erreur lorsque l'utilisateur commence à saisir
-                    }}
-                    style={{ width: '100%', height: '40px' }}
-                    isInvalid={!!passwordError}
+                  {recaptchaError && <div className="invalid-feedback">Ce champ est requis</div>}
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Button variant="primary" type="submit" style={{ width: '100%', height: '40px', marginTop: '10px' , marginBottom:'25px' }}>
+                    Se connecter
+                  </Button>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <GoogleLogin
+                    buttonText="Se connecter avec Google"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogleFailure}
+                    cookiePolicy={'single_host_origin'}
+                    style={{ width: '100%', height: '40px', marginTop: '10px' }}
+                    render={(renderProps) => (
+                      <button
+                        style={{ width: '50%', height: '40px', marginTop: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                        onMouseEnter={() => {
+                          renderProps.onMouseEnter();
+                        }}
+                        onMouseLeave={() => {
+                          renderProps.onMouseLeave();
+                        }}
+                        onClick={renderProps.onClick}
+                        disabled={renderProps.disabled}
+                      >
+                        <FaGoogle style={{ marginRight: '10px', color: renderProps.disabled ? 'gray' : 'white'  }} />
+                        Se connecter avec Google
+                      </button>
+                    )}
                   />
-                  {passwordError && <div className="invalid-feedback">Ce champ est requis</div>}
-                </Form.Group>
-              </Col>
-            </Row>
-
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              sitekey="6LfCXsMpAAAAAHRC4sxmBH_7kIT-iRGQi8Geb_KJ"
-              onChange={handleRecaptchaChange}
-              className="mt-3"
-            />
-            {recaptchaError && <div className="invalid-feedback">Ce champ est requis</div>}
-
-            <Button variant="primary" size="lg" block className="mb-4 mt-4" type="submit">
-              Se connecter
-            </Button>
-
-            {/* Boutons de connexion avec Google et Apple */}
-            <div className="text-center mb-4">
-              <Button variant="outline-danger" size="lg" style={{ marginRight: '10px' }}>
-                <FaGoogle />Google
-              </Button>
-              <Button variant="outline-dark" size="lg">
-                <FaApple />Apple
-              </Button>
-            </div>
-
-            <div className="text-center mt-3">
-              Pas encore inscrit? <a href="/inscription">S'inscrire</a>
-            </div>
-            <div className="text-center mt-3">
-              <a href="/reset-password">Mot de passe oublié?</a>
-            </div>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+                </Col>
+              </Row>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </GoogleOAuthProvider>
   );
-}
+};
 
 export default SignFormulaire;
