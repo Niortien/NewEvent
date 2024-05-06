@@ -18,6 +18,7 @@ import SignFormulaire from "../components/UI/SignFormulaire.jsx"
 import CodeConfirmation from "../pages/CodeConfirmation.jsx";
 import ResetPassword from "../pages/ResetPassword.jsx";
 import NewPassword from "../components/UI/NewPassword.jsx";
+import ListPrestataire from "../components/UI/ListPrestataire.jsx";
 
 
 const Routers = () => {
@@ -40,6 +41,7 @@ const Routers = () => {
       <Route path="/blogs/:slug" element={<BlogDetails />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="/list-prestataire" element = {<ListPrestataire />}/>
     </Routes>
   );
 };
