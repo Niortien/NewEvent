@@ -14,6 +14,11 @@
   outline: none;
   border-radius: 5px;
 }
+.social__link-icon :hover{
+  background-color: orange;
+  padding: 5px 5px ;
+  border-radius: 4px;
+}
 
 @media only screen and (max-width: 768px) {
   .contact__btn {

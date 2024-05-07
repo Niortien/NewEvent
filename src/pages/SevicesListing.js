@@ -11,11 +11,11 @@ function SevicesListing() {
         <CommonSection title=" Services Listing" />
         <div className='up'>
             <div className="upp"><h5>Nos Catégories</h5></div>
-            <div className="down"><h4> de services</h4></div>
+            <div className="downn"><h4> de services</h4></div>
         </div>
         <div className='Listing'>
         <Link to="/Mariageservice" className="listing-box one"></Link>
-        <Link to="/Mariageservice" className="listing-box two"></Link>
+        <Link to="/Birthservice" className="listing-box two"></Link>
         <Link to='/Mariageservice' className="listing-box three"></Link>
         </div>
         

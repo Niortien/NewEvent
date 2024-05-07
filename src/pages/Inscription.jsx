@@ -4,7 +4,7 @@ import '../styles/inscription.css'
 import { Link } from 'react-router-dom'
 function Inscription() {
     return (
-        <Helmet>
+        
 <div className='inscription'>
     
 
@@ -22,7 +22,7 @@ function Inscription() {
 <Link to="/sign"  className='inscription-up-link'>Connexion</Link>
 </div>
 </div>
-        </Helmet>
+     
     )
 }
 

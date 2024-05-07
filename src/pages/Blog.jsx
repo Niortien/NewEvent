@@ -11,7 +11,7 @@ const Blog = () => {
       <section>
         <Container>
           <Row>
-            <BlogList />
+           
             <BlogList />
           </Row>
         </Container>

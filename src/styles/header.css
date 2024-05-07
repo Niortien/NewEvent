@@ -1,7 +1,9 @@
 .header__top {
+  
   padding: 10px 0px;
   background: #ad062d;
   color: #fff;
+ 
 }
 
 .header__top__left {
@@ -105,6 +107,9 @@
 .main__navbar {
   padding: 15px 0px;
   background: #000d6b;
+
+  
+ 
 }
 
 .mobile__menu i {
@@ -134,12 +139,12 @@
 }
 
 .search__box {
-  border: 1px solid #7c8a972f;
+  border: 1px solid #7d7c972f;
   padding: 7px 12px;
   display: flex;
   align-items: center;
   border-radius: 50px;
-  background: #020a4de9;
+  background: #020a4d68;
 }
 
 .search__box input {

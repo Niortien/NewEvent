@@ -52,7 +52,7 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="mb-4 text-center">
-              <h6 className="section__subtitle">Our clients says</h6>
+              <h6 className="section__subtitle">Nos  clients disent </h6>
               <h2 className="section__title">Testimonials</h2>
             </Col>
 
@@ -66,8 +66,8 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="mb-5 text-center">
-              <h6 className="section__subtitle">Explore our blogs</h6>
-              <h2 className="section__title">Latest Blogs</h2>
+              <h6 className="section__subtitle">Visitez nos Blogs</h6>
+              <h2 className="section__title">Derniers Blogs</h2>
             </Col>
 
             <BlogList />

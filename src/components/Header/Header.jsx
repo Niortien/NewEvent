@@ -29,6 +29,7 @@ const navLinks = [
 ];
 
 const Header = () => {
+  const date = new Date();
   const menuRef = useRef(null);
 
   const toggleMenu = () => menuRef.current.classList.toggle("menu__active");
@@ -43,7 +44,7 @@ const Header = () => {
               <div className="header__top__left">
                 <span>Besoin d'aide?</span>
                 <span className="header__top__help">
-                  <i class="ri-phone-fill"></i> +225 01 41 89 86 59 / 07 77 05 23 17
+                  <i class="ri-phone-fill"></i> +225 01 41 89 86 59 / 07 77 05 23 17 
                 </span>
               </div>
             </Col>
@@ -57,6 +58,7 @@ const Header = () => {
                 <Link to="/inscription" className=" d-flex align-items-center gap-1">
                   <i class="ri-user-line"></i> Inscription
                 </Link>
+                <div> {/* ===============profile =========== */}</div>
               </div>
             </Col>
           </Row>
@@ -110,7 +112,7 @@ const Header = () => {
             >
               <button className="header__btn btn ">
                 <Link to="/contact">
-                  <i class="ri-phone-line"></i> Démander un appel
+                  <i class="ri-phone-line"></i> appel
                 </Link>
               </button>
             </Col>
