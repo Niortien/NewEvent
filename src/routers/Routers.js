@@ -16,7 +16,6 @@ import LoginFormulairePrestataire from '../components/UI/LoginFormulairePrestata
 //import ClientLogin from "../pages/ClientLogin";
 import SignFormulaire from "../components/UI/SignFormulaire.jsx"
 import CodeConfirmation from "../pages/CodeConfirmation.jsx";
-<<<<<<< HEAD
 import BirthDetails from "../pages/BirthDetails.jsx";
 import BirthListing from "../pages/BirthListing.jsx";
 import BaptDetails from "../pages/BaptDetails.jsx";
@@ -27,13 +26,6 @@ import Issa from "../components/UI/issa.js";
 import DashboardDataPrestataire from "../assets/data/DashboardDataPrestataire.js";
 import DashboardClient from "../pages/DashboardPrestataire.jsx";
 import AjouterDeService from "../pages/AjouterDeService.js";
-=======
-import ResetPassword from "../pages/ResetPassword.jsx";
-import NewPassword from "../components/UI/NewPassword.jsx";
-import ListPrestataire from "../components/UI/ListPrestataire.jsx";
-
-
->>>>>>> 81e197c53bec46639b66cb7199ef1b2d1d0dc09b
 const Routers = () => {
   return (
     <Routes>
@@ -58,12 +50,7 @@ const Routers = () => {
       <Route path="/loginClient" element={<LoginFormulaireClient />} />
       <Route path="/sign" element={<SignFormulaire />} />
       <Route path="code-confirmation" element={<CodeConfirmation />}/>
-<<<<<<< HEAD
       <Route path='/issa'  element={ <Dashh/> } />
-=======
-      <Route path="reset-password" element ={<ResetPassword />}/>
-      <Route path="new-password" element ={<NewPassword />}/>
->>>>>>> 81e197c53bec46639b66cb7199ef1b2d1d0dc09b
       <Route path="/blogs" element={<Blog />} />
       <Route path="/blogs/:slug" element={<BlogDetails />} />
       <Route path="/contact" element={<Contact />} />
@@ -75,11 +62,6 @@ const Routers = () => {
       
 
       <Route path="*" element={<NotFound />} />
-<<<<<<< HEAD
-
-=======
-      <Route path="/list-prestataire" element = {<ListPrestataire />}/>
->>>>>>> 81e197c53bec46639b66cb7199ef1b2d1d0dc09b
     </Routes>
   );
 };

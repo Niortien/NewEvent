@@ -6,7 +6,7 @@ const DashboardData=[
         Pays:"Cap-vert",
         Numero:"456789654",
         Nom:"Maniga",
-        Prenom:"Reine",
+        Prenom:"Toure",
        
         
     }
