@@ -3,16 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.16",
     "@mui/material": "^5.15.16",
     "@mui/styled-engine-sc": "^6.0.0-alpha.18",
+=======
+    "@react-oauth/google": "^0.12.1",
+>>>>>>> 81e197c53bec46639b66cb7199ef1b2d1d0dc09b
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.8",
+<<<<<<< HEAD
     "bootstrap": "^5.3.3",
+=======
+    "bootstrap": "^5.1.3",
+    "js-base64": "^3.7.7",
+>>>>>>> 81e197c53bec46639b66cb7199ef1b2d1d0dc09b
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
